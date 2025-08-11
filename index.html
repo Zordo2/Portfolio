@@ -489,7 +489,23 @@
         padding: 10px;
     }
 }
+/* Close button inside off-canvas menu */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
 
+@media (min-width: 769px) {
+    .close-btn {
+        display: none;
+    }
+}
 
     </style>
 </head>
@@ -520,7 +536,7 @@
     <!-- Header Section -->
     <header id="home">
         <img src="images/Zordok.jpg" alt="Mohamed Zordok" class="profile-img">
-        <h1>Mohamed Zordok</h1>
+        <h1>Mohamed Tarek Zordok</h1>
         <p class="title">Software Engineer</p>
         <div class="contact-info">
             <a href="tel:01121808461">
@@ -564,17 +580,19 @@
     </nav> -->
     <!-- Navigation -->
 <nav>
-        <button id="menu-toggle" class="hamburger">&#9776;</button>
-        <ul id="nav-menu">
-            <li><a href="#home">Home</a></li>   
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
+    <button id="menu-toggle" class="hamburger">&#9776;</button>
+    <ul id="nav-menu">
+        <li><button id="menu-close" class="close-btn">&times;</button></li>
+        <li><a href="#home">Home</a></li>   
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+    </ul>
 </nav>
+
 
     <!-- About Section -->
     <section id="about">
@@ -859,7 +877,17 @@ document.querySelectorAll('#nav-menu a').forEach(link => {
         navMenu.classList.remove('show');
     });
 });
-
+ // Mobile Menu Toggle
+const menuClose = document.getElementById('menu-close');
+menuClose.addEventListener('click', () => {
+    navMenu.classList.remove('show');
+});
+// Close menu when clicking a link
+document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+    });
+});
     </script>
 </body>
 </html>
