@@ -233,7 +233,125 @@
             font-size: 0.9rem;
             margin-top: 0.3rem;
         }
+        /* Services Section Styles */
+         .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+         /* Projects Section */
+        #projects {
+            padding: 3rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         
+        #projects h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 0.5rem;
+            text-align: left;
+        }
+        
+        #projects h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+            text-align: right;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .project-info h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .project-info h3 a:hover {
+            color: #3498db;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            #projects {
+                padding: 2rem 5%;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         /* Footer */
         footer {
             background: #2c3e50;
@@ -292,6 +410,32 @@
                 gap: 0.8rem;
             }
         }
+         /* Back to Top Button */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    #back-to-top:hover {
+      background: #2980b9;
+    }
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
     </style>
 </head>
 <body>
@@ -342,7 +486,7 @@
                 </svg>
                 GitHub
             </a>
-            <a href="https://www.linkedin.com/in/mohamed-zordok" target="_blank">
+            <a href="https://www.linkedin.com/in/mohamed-zordok-961301192/" target="_blank">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#linkedin-icon"></use>
                 </svg>
@@ -354,11 +498,14 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#about">About</a></li>
+            <li><a href="#" target="_blank">Home</a></li>   
+        <!-- <li><a href="https://zordo2.github.io/Portfolio/" onclick="window.location.href='https://zordo2.github.io/Portfolio/'; return false;" target="_blank">Home</a></li>    -->
+             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
         </ul>
     </nav>
     
@@ -467,22 +614,90 @@
         </div>
     </section>
     
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info" style="justify-content: flex-start; gap: 2rem; margin-top: 1.5rem;">
-            <div>
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">Location</h3>
-                <p>Elmarg, Cairo, Egypt</p>
+     <!-- Services Section -->
+    <section id="services">
+        <h2>Services</h2>
+        <div class="services-container">
+                 <div class="service-card">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M8 21h8"></path>
+                        <path d="M12 17v4"></path>
+                    </svg>
+                </div>
+                <h3>Web Development</h3>
+                <p>If you are looking for a developer who'll take over the research and development of your website, I am a well-established professional to help you with this.</p>
             </div>
-            <div>
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">Languages</h3>
-                <p>Arabic: Native</p>
-                <p>English: Very Good</p>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h3>UI/UX Design</h3>
+                <p>An effective UI/UX is what captures attention and spreads a clear message. I make sure the design is innovative and neat with all of this.</p>
+            </div>  
+             <div class="service-card">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M8 21h8"></path>
+                        <path d="M12 17v4"></path>
+                    </svg>
+                </div>
+                <h3>SEO Services</h3>
+                <p>I provide comprehensive SEO services to help your website rank higher in search engine results.</p>
+            </div>
+        </div>     
+    </section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <a href="https://hadutamisria.com/" target="_blank">
+                    <img src="images/Haduta Misria.png" alt="بوابة حدوتة مصرية الإخباري" class="project-img">
+                </a>
+                <div class="project-info">
+                    <h3><a href="https://hadutamisria.com/" target="_blank">تصميم موقع بوابة حدوتة مصرية الإخباري
+                       <p>Haduta Misria Newspaper</p>
+                    </a></h3>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card">
+                <a href="https://www.elhamd-pro.com/" target="_blank">
+                    <img src="images/Elhamd-Pro.png" alt="شركة الحمد للمشروعات الكهربائية والصناعية" class="project-img">
+                </a>
+                <div class="project-info">
+                    <h3><a href="https://www.elhamd-pro.com/" target="_blank">تصميم موقع شركة الحمد للمشروعات الكهربائية والصناعية
+                        <p>Elhamd For Electrical And Industrial Projects</p>
+                    </a>
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card">
+                <a href="https://mohamedhanafy.kesug.com/" target="_blank">
+                    <img src="images/HR-Mohamed Hanafy.png" alt="محمد حنفي لإستشارات الموارد البشرية" class="project-img">
+                </a>
+                <div class="project-info">
+                    <h3><a href="https://mohamedhanafy.kesug.com/" target="_blank">تصميم موقع أ / محمد حنفي لإستشارات الموارد البشرية
+                        <p>HR Mohamed Hanafy Personal Website</p>
+                    </a>
+                    </h3>
+                </div>
             </div>
         </div>
     </section>
-    
+     <!-- Back to Top Button -->
+  <button id="back-to-top" title="Go to top">↑</button>
     <!-- Footer -->
     <footer>
         <div class="social-links">
@@ -491,7 +706,7 @@
                     <use xlink:href="#github-icon"></use>
                 </svg>
             </a>
-            <a href="https://www.linkedin.com/in/mohamed-zordok" target="_blank" title="LinkedIn">
+            <a href="https://www.linkedin.com/in/mohamed-zordok-961301192/" target="_blank" title="LinkedIn">
                 <svg class="social-icon" aria-hidden="true">
                     <use xlink:href="#linkedin-icon"></use>
                 </svg>
@@ -546,6 +761,23 @@
         skillsSection.style.opacity = '0';
         skillsSection.style.transform = 'translateY(20px)';
         skillsSection.style.transition = 'all 0.6s ease';
+        // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
     </script>
 </body>
 </html>
