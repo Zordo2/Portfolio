@@ -82,12 +82,32 @@
             top: 0;
             z-index: 100;
         }
+
+        /* Navigation Container */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Logo Styles */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
         
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
             flex-wrap: wrap;
+            margin: 0;
         }
         
         nav ul li {
@@ -104,6 +124,84 @@
         
         nav ul li a:hover {
             background: #2c3e50;
+        }
+        
+        /* Hamburger Menu Button */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Off-canvas Menu */
+        #nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        /* Close button inside off-canvas menu */
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .close-btn {
+                display: block;
+            }
+
+            #nav-menu {
+                position: fixed;
+                top: 0;
+                right: -250px;
+                width: 250px;
+                height: 100%;
+                background: #34495e;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding-top: 60px;
+                padding-left: 20px;
+                transition: right 0.3s ease;
+            }
+
+            #nav-menu.show {
+                right: 0;
+            }
+
+            #nav-menu li {
+                margin: 0.8rem 0;
+            }
+
+            #nav-menu li:first-child {
+                display: block;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #nav-menu li:first-child {
+                display: none;
+            }
         }
         
         /* Section Styles */
@@ -343,16 +441,23 @@
             color: #3498db;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            #projects {
-                padding: 2rem 5%;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        .project-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: #3498db;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
         }
+
+        .project-btn:hover {
+            background: #2980b9;
+        }
+
         /* Footer */
         footer {
             background: #2c3e50;
@@ -390,17 +495,35 @@
             fill: currentColor;
         }
         
+         /* Back to Top Button */
+        #back-to-top {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: #3498db;
+          color: white;
+          border: none;
+          cursor: pointer;
+          font-size: 20px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 999;
+        }
+        #back-to-top:hover {
+          background: #2980b9;
+        }
+        #back-to-top.show {
+          opacity: 1;
+          visibility: visible;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
             section {
                 padding: 2rem 5%;
             }
@@ -410,119 +533,15 @@
                 align-items: center;
                 gap: 0.8rem;
             }
+
+            #projects {
+                padding: 2rem 5%;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
-         /* Back to Top Button */
-    #back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #3498db;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 999;
-    }
-    #back-to-top:hover {
-      background: #2980b9;
-    }
-    #back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    /* Navigation Container */
-/* .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-} */
-
-/* Hamburger Menu Button */
-.hamburger {
-    display: none;
-    font-size: 1.8rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-/* Off-canvas Menu */
-#nav-menu {
-    display: flex;
-    list-style: none;
-}
-
-@media (max-width: 768px) {
-    #nav-menu {
-        position: fixed;
-        top: 0;
-        right: -250px;
-        width: 250px;
-        height: 100%;
-        background: #34495e;
-        flex-direction: column;
-        align-items: flex-start;  /* Align to left */
-        justify-content: flex-start; /* Align to top */
-        padding-top: 60px;
-        padding-left: 20px; /* small left padding for links */
-        transition: right 0.3s ease;
-    }
-
-    #nav-menu.show {
-        right: 0;
-    }
-
-    #nav-menu li {
-        margin: 0.8rem 0;
-    }
-
-    .hamburger {
-        display: block;
-        padding: 10px;
-    }
-}
-/* Close button inside off-canvas menu */
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-}
-
-@media (min-width: 769px) {
-    .close-btn {
-        display: none;
-    }
-}
-.project-btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
-    background: #3498db;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-.project-btn:hover {
-    background: #2980b9;
-}
 
     </style>
 </head>
@@ -597,33 +616,23 @@
     </header>
     
     <!-- Navigation -->
-    <!-- <nav>
-        <ul>
-            <li><a href="#home" target="_blank">Home</a></li>   
-             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#footer">Contact</a></li>
-        </ul>
-    </nav> -->
-    <!-- Navigation -->
-<nav>
-    <button id="menu-toggle" class="hamburger">&#9776;</button>
-    <ul id="nav-menu">
-        <li><button id="menu-close" class="close-btn">&times;</button></li>
-        <li><a href="#home">Home</a></li>   
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#footer">Contact</a></li>
-    </ul>
-</nav>
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">MTWZ</a>
+            <button id="menu-toggle" class="hamburger">&#9776;</button>
+            <ul id="nav-menu">
+                <li><button id="menu-close" class="close-btn">&times;</button></li>
+                <li><a href="#home">Home</a></li>   
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
     <!-- About Section -->
@@ -735,18 +744,18 @@
     <section id="services">
         <h2>Services</h2>
         <div class="services-container">
-                 <div class="service-card">
+                   <div class="service-card">
                 <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <path d="M8 21h8"></path>
-                        <path d="M12 17v4"></path>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
                     </svg>
                 </div>
                 <h3>Web Development</h3>
                 <p>If you are looking for a developer who'll take over the research and development of your website, I am a well-established professional to help you with this.</p>
-            </div>
-            <div class="service-card">
+            </div> 
+                 <div class="service-card">
                 <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -863,10 +872,12 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
-                window.scrollTo({
-                    top: targetElement.offsetTop - 60,
-                    behavior: 'smooth'
-                });
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
         
@@ -886,48 +897,43 @@
         skillsSection.style.opacity = '0';
         skillsSection.style.transform = 'translateY(20px)';
         skillsSection.style.transition = 'all 0.6s ease';
+        
         // Back to Top Button
-    const backToTopButton = document.getElementById('back-to-top');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('show');
-      } else {
-        backToTopButton.classList.remove('show');
-      }
-    });
-    
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    // Mobile Menu Toggle
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('show');
+          } else {
+            backToTopButton.classList.remove('show');
+          }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const menuClose = document.getElementById('menu-close');
 
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-});
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
 
-// Close menu when clicking a link (optional)
-document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('show');
-    });
-});
- // Mobile Menu Toggle
-const menuClose = document.getElementById('menu-close');
-menuClose.addEventListener('click', () => {
-    navMenu.classList.remove('show');
-});
-// Close menu when clicking a link
-document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('show');
-    });
-});
+        menuClose.addEventListener('click', () => {
+            navMenu.classList.remove('show');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
     </script>
 </body>
-</html>
